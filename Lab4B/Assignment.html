@@ -1,102 +1,71 @@
 <HTML>
 <HEAD>
-<TITLE>Project 4C</TITLE>
+<TITLE>Project 4B</TITLE>
 </HEAD>
 <BODY>
 <CENTER>
-<H1>Project 4C<br>
-Internet Of Things Security</H1>
+<H1>Project 4B<br>
+Sensors Input</H1>
 </CENTER>
 
 <H2>INTRODUCTION:</H2>
 <P>
-The Internet Of Things is populated with an ever expanding
-range of sensors and appliances.  Initially such devices
-were likely to be connected to monitoring and control 
-devices over purely local/personal networks 
-(e.g., infra-red, Bluetooth, ZigBee), but it is
-increasingly common to connect such devices 
-(directly or via a bridge) to the Internet.
-This enables remote monitoring and control, but it also
-exposes them to a variety of remote attacks.
+One of the things that makes small, low-power-consumption
+systems interesting is ability they give us to create software
+that interacts with people in the physical world.
+The input side of those interactions is via a variety of local sensors
+(e.g., for sound, light, temperature, position, motion, pressure).
+The output side can be sensory (e.g., sound, lights, low power displays)
+or physical (e.g. mechanical actuators), or (through digital and
+analog outputs) any other controllable device.
+Building interactive personal appliances requires us to be able to
+communicate with the types of sensors, indicators and actuators that
+can be connected to such systems.  Such devices have become increasingly 
+popular and common in recent years.
 </P>
 <P>
-For some targets (e.g., a national power grid or 
-uranium separation centrifuges) their strategic importance
-and need for protection should be clear.
-It might not be immediatly obvious how one might hijack simple
-devices (e.g., light switches or temperature/humidity sensors) 
-for nefarious purposes, but:
-<ul>
-   <li> there have been numerous instances where web-cams
-   	have been hijacked to violate peoples' privacy.</li>
-   <li> smart devices like routers, baby-monitors, 
-   	washing machines, and even lightbulbs have been
-	conscripted into <em>botnets</em> to mount 
-	<em>Distributed Denial of Service</em>
-	attacks and to be used for other bad purposes.</li>
-   <li> security researchers have been able to hijack the
-   	digital controls of modern cars.</li>
-   <li> consider the havoc that could be wrought by someone
-   	who was able to seize control of a networked
-	pacemaker or insulin pump, some models of both of which have been demonstrated
-	to have serious vulnerabilities.</li>
-</ul>
-Attackers have proven innovative and resourceful in making use of compromised 
-devices of many kinds, so even if you do not see any obvious dangers, prudence suggests that greater care be taken with the security of IOT devices.
-In particular, all communications and control for 
-IOT devices should be encrypted and authenticated.
-</P>
-<P>
-In this project we will extend your
-embedded temperature sensor to accept commands from, and send
-reports back to, a network server.  You will do this over both
-unencrypted and encrypted channels.
+In this project we will create applications that run in an embedded system,
+read data from external sensors, and log the results.  Real world 
+devices of this kind are commonly networked.  We'll take that step in Project 4C. For now, the device you build will be stand-alone.
 </P>
 
 <H2>RELATION TO READING AND LECTURES:</H2>
 <P>
-This project applies the principles discussed in the reading and lectures on
-Cryptography, Distributed Systems Security, and Secure Socket Layer encryption.
+This project is an introductory exploration of technologies and services not 
+covered in the reading and lectures.
 </P>
 
 <H2>PROJECT OBJECTIVES:</H2>
 <UL>
-    <LI> Primary: Demonstrate the ability to design, build and debug an 
-    	embedded application that interacts with a central control server
-	with the aid of server-side logs.</li>
-    <LI> Primary: Demonstrate the ability to implement a secure channel
-    	using standard tools.</li>
-    <LI> Primary: Demonstrate the ability to research and exploit
-    	a complex API, and to debug an application involving encrypted communication.</li>
+    <LI> Primary: Demonstrate the ability to design, build and debug interactive 
+    	applications on an embedded system.</LI>
+    <LI> Primary: Develop the ability to work with embedded system sensors and actuators
+         through standard tool kits.</LI>
+    <LI> Primary: Gain experience with the processing of digital and analog inputs
+    	 on an embedded system.</li>
 </UL>
 
 <H2>DELIVERABLES:</H2>
 A single compressed tarball (<tt>.tar.gz</tt>) containing:
 <UL>
-    <LI> C source files for two embedded applications 
-	(<tt>lab4c_tcp</tt> and <tt>lab4c_tls</tt>)
-    	that build and run (with no errors or warnings) on a Beaglebone.
- <!--
-    <LI> a public key <tt>lab4c_server.crt</tt> that your device will use to authenticate
-    	the logging server.</li>
-    -->
+    <LI> C source files for an embedded application that builds and runs (with no errors
+     	or warnings) on an embedded system
     <li> A <tt>Makefile</tt> to build and test your application.
 	 The higher level targets should include:
 	<ul>
-		<li>default ... build both versions of your program
-	     		    (compiling with the <strong><tt>-Wall</tt></strong> and 
-			    <strong><tt>-Wextra</tt></strong> options).  </li>
-		<li><strong>clean</strong> ... delete all programs and output created by the Makefile
-			and restore the directory to its freshly untarred state.</li>
-		<li><strong>dist</strong> ... create the deliverable tarball.</li>
+		<li>default ... build your program
+		    (compiling with the <strong><tt>-Wall</tt></strong> and 
+		    <strong><tt>-Wextra</tt></strong> options).
+		    </li>
+		<li><strong>check</strong> ... execute an automated smoke-test of your
+			application to see if it runs and can talk to its sensors.</li>
+		<li><strong>clean</strong> ... delete all programs and output generated by the Makefile</li>
+		<li><strong>dist</strong> ... (runnable on a Linux desktop or server) create the deliverable tarball</li>
 	</ul></li>
-    	Note that this <tt>Makefile</tt> is intended to be executed on a Beaglebone, but you
-	may find it convenient to create a <tt>Makefile</tt> that can be run on either a
-	Beaglebone or a Linux server/desktop/notebook.
-    <li> A <tt>README</tt> file containing:
+    	Note that this <tt>Makefile</tt> is intended to be executed on an embedded system
+    <li> a <tt>README</tt> file containing:
 	<ul>
-		<li> descriptions of each of the included files.</li>
+		<li> descriptions of each of the included files</li>
 		<li> any other comments on your submission 
 			that you would like to bring to our attention 
 	 		(e.g., research, limitations, features, testing methodology).</LI>
@@ -106,184 +75,216 @@ A single compressed tarball (<tt>.tar.gz</tt>) containing:
 <H2>PREPARATION:</H2>
 <P>
 <ul>
-   <li>Part 1 
-       <ul>
-       	    <li>Obtain the <a href="serverinfo.html">host name, port # and server status URL</a>
-		for the TCP logging server.</li>
-   	</ul>
-   </li>
-   <li>Part 2
-       <ul>
-       	    <li>Obtain the <a href="serverinfo.html">host name, port # and server status URL</a>
-       	    	for the TLS logging server.</li>
-	   <li>Review the documentation for the
-		<a href="https://www.openssl.org/docs/manmaster/man7/ssl.html">OpenSSL</a> 
-		SSL/TLS library, which should already be installed on your Beaglebone.
-		You will likely want to seek out additional tutorials on using
-		OpenSSL to initiate connections and verify server certificates.
-	   </li>
-   	</ul>
-   </li>
+   <li> If you have not already done so, look at the documentation for the
+	<A href="http://man7.org/linux/man-pages/man2/poll.2.html">poll(2)</A>
+	system call 
+	or the <tt>O_NONBLOCK</tt> option used with the
+	<A href="http://man7.org/linux/man-pages/man2/open.2.html">open(2)</A>
+	system call or
+	<A href="http://man7.org/linux/man-pages/man2/fcntl.2.html">fcntl(2)</A>
+	<TT>F_SETFL</tt> operation.
+   <li> Read the documentation on the 
+   	<A href="http://wiki.seeed.cc/Grove-Temperature_Sensor_V1.2">Grove Temperature Sensor</A>,
+	and the algorithm for converting a reading into a temperature.</li>
+   <li> Review the documentation for the
+   	<a href="https://iotdk.intel.com/docs/master/mraa/">MRAA</A>
+	library, an open source, platform independent library for embedded system I/O. (The MRAA page does not explicitly list the Beaglebone
+Green Wireless, the device you will be using, as supported, but it is supported.) 
+	Also read the
+	<a href="https://drive.google.com/drive/folders/0B6dyEb8VXZo-N3hVcVI0UFpWSVk">General Purpose and Analog I/O</A> 
+	tutorial that discusses the particular classes you will be using.  These classes include the functions you will be using to read from
+	the temperature sensor and button.  
+	(Note that to link with this library you will have to add <tt>-lmraa</tt> 
+	 to your library search list).
+   <li> Read the instructions that came with your Grove Starter Kit.
+        They include information on all of your sensors and instructions on
+	where to plug each in to the Base Shield.</li>
+   <li>	Attach your Grove Base Shield 
+   	(a plug-on daughter-board with connectors for all of your sensors) to your embedded system.</li>
+   <li> Attach your Grove Temperature Sensor to the Analog A0/A1 connector on your Grove cape,
+   	where it will be addressed as I/O pin #1.</li>
+   <li> Attach your Grove Button to the GPIO_50 connector on your Grove cape,
+   	where it will be addressed as I/O pin #60.</li>
+   <li> The calibration constants for converting thermometer readings into 
+     	temperatures depend on the Grove cape voltage switch being set to 5 volts.
+   <li> Power-up your embedded system and confirm that you can still log in and transfer files to it.</li>
 </ul>
 </P>
 
 <H2>PROJECT DESCRIPTION:</H2>
-<H3>Part 1: Communication with a Logging Server</H3>
 <P>
-Write a program (called <tt>lab4c_tcp</tt>) that:
+Write a program (called <tt>lab4b</tt>) that:
 <ul>
-   <li> builds and runs on your Beaglebone.</li>
-   <li> is based on the temperature sensor application you built previously 
-        (including the <tt>--period=</tt>, <tt>--scale=</tt> and <tt>--log=</tt> options).
-   </li>
-   <li> accepts the following (mandatory) new parameters:
+   <li> builds and runs on your embedded system.</li>
+   <li> uses the AIO functions of the MRAA library to get readings from your temperature sensor.</li>
+   <li>	samples a temperature sensor at a configurable rate (defaulting to 1/second, and controlled
+   	by an optional <tt>--period=</tt># command line parameter that specifies a sampling 
+	interval in seconds).</li>
+   <li> converts the sensor value into a temperature.  By default, temperatures should be
+        reported in degrees Fahrenheit, but this can be controlled with an optional
+	<tt>--scale=C</tt> (or <tt>--scale=F</tt>) command line parameter.</li>
+   <li> creates a report for each sample that includes:
    	<ul>
-		<li><tt>--id=</tt><em>9-digit-number</em></li>
-		<li><tt>--host=</tt><em>name or address</em></li>
-		<li><tt>--log=</tt><em>filename</em></li>
-		<li><em>port number</em></li>
+	   <li>	time of the sample (e.g. <tt>17:25:58</tt>) in the local timezone</li>
+	   <li> a single blank/space</li>
+	   <li> a decimal temperature in degrees and tenths (e.g. <tt>98.6</tt>)
+	   <li> a newline character (<em>\n</em>)
+	</ul></li>
+   <li> writes that report to the stdout (fd 1).</li>
+   <li> appends that report to a logfile (which it creates on your embedded system) if that logging has been enabled
+   	with an optional <tt>--log=</tt><em>filename</em> parameter.</li>
+   <li> uses the GPIO functions of the MRAA library to samples the state of the button 
+   	(from your Grove sensor kit) and when it is pushed ...
+   	<ul>
+	   <li> outputs (and logs) a final sample with the time and the string <tt>SHUTDOWN</tt> 
+	   	(instead of a temperature).</li>
+	   <li> exits</li>
 	</ul>
-   	Note that there is no <tt>--port=</tt> in front of the port number.
-	      This is a non-switch parameter.
    </li>
-   <li> accepts the same commands and generates the same reports as the
-   	previous Beaglebone project, but now the input and output are from/to
-	a network connection to a server.
-   	<ol type="1">
-		<li> open a TCP connection to the server at the specified address and port</li>
-		<li> immediately send (and log) an ID terminated with a newline:<br>
-			<strong><tt>ID=</tt></strong><em>ID-number</em>  <br>
-			This new report
-			enables the server to keep track of which devices it has received 
-			reports from.
-		</li>
-		<li> as before, send (and log) newline terminated temperature reports over the connection </li>
-		<li> as before, process (and log) newline-terminated commands received over the connection<br>
-			If your temperature reports are mis-formatted, the server will return
-			a <strong><tt>LOG</tt></strong> command with a description of the
-			error.<br> 
-			Having logged these commands will help you
-			find and fix any problems with your reports.
-		</li>
-		<li> as before, the last command sent by the server will be an <strong><tt>OFF</tt></strong>.<br>
-		     Unlike the previous project, the button will not be used as an
-		     alternative manual shutdown mechanism.
-		</li>
-	</ol>
-   	<P>
-	   Do not accept commands from standard input, or send received commands or generated
-	   reports to standard output.
-	</p>
+   <li> Your program can assume that the sensors are connected as recommended by the Grove
+        documentation.
    </li>
-   <li> As before, assume that the temperature sensor has been connected
-     	to Analog input 0.</li>
 </ul>
-The ID number (passed with the initial <strong>ID=</strong> command) will appear in the TCP server log
-(follow the
-<a href="serverinfo.html">TCP server URL</a>),
-and will permit you to find the reports and server-side logs for your sessions.
-It is vitally important that the <strong>ID=</strong> string you send to the server (in your first report) 
-be identical to the value (passed to your client) in the <tt>--id=</tt> command line argument.
-If they are not identical, the sanity-check and grading scripts will be unable to find
-the reports from your session(s) and will assume that your program did not work.
-</P>
-<P>
-If the server receives incorrect reports from you it will send back LOG
-messages describing the errors.
-</P>
-<p>
-To protect your privacy, you do not have to use your student ID number, but merely
-a nine-digit number that you will recognize and that will be different from the
-numbers chosen by others. 
 </p>
 <P>
-From the server status page, you will also be able to see, for each client,
-a log of all commands sent to and reports received from that client in the
-most recent session.  If the server does not like your reports, it may be due
-to garbage (typically null) characters.  If the problem with your reports is
-not obvious, examine the server log in an editor that will display non-graphical
-characters.
+Note that we want you to use MRAA AIO/GPIO functions to access your sensors, and not the (more powerful
+and convenient) Grove library functions.  The Grove library hides all of the details of embedded I/O, 
+sampling and signal interpretation, but only works for the Grove Sensors.  
+We want you to get experience with direct control of and access to the digital and analog I/O pins.
+</P>
+<P>
+Many people have observed that the recommended calibration constants appear to be off by
+ten degrees or more.  Every sensor (including the ones that will be used when we grade your submissions)
+seems to read differently.
 </p>
 <P>
-As in Project 4B, to facilitate development and testing you might find it helpful to write your program to, if compiled with a special
-(<tt>-DDUMMY</tt>) define, include mock implementations for the <tt>mraa_aio_</tt> and
-<tt>mraa_gpio_</tt> functionality. Doing so will enable you to do most of your testing on your regular computer.
-When you are satisfied that it works there, modify your Makefile run the command "<tt>uname -r</tt>", check for the
-presence of the string "<tt>beaglebone</tt>" in that output, and if not found, build with a rule
+The time returned from <em>localtime(3)</em> will only be in the correct timezone if you have
+correctly configured the local timezone on your embedded system.
+</P>
+Extend your program to (in parallel with generating reports) accept the following commands from stdin:
+<ul>
+   <li> <tt><strong>SCALE=F</strong></tt><br>
+   	This command should cause all subsequent reports to be generated in degrees Fahrenheit.
+   </li>
+   <li> <tt><strong>SCALE=C</strong></tt><br>
+   	This command should cause all subsequent reports to be generated in degrees Centegrade
+   </li>
+   <li> <tt><strong>PERIOD=</strong></tt><em>seconds</em><br>
+   	This command should change the number of seconds between reporting intervals.
+	It is acceptable if this command does not take effect until after the next
+	report.
+   </li>
+   <li> <tt><strong>STOP</strong></tt><br>
+   	This command should cause the program to stop generating reports, but continue
+	processing input commands.
+	If the program is not generating reports, merely log receipt of the command.
+   </li>
+   <li> <tt><strong>START</strong></tt><br>
+   	This command should cause the program to, if stopped, resume generating reports.
+	If the program is not stopped, merely log receipt of the command.
+   </li>
+   <li> <strong><tt>LOG</tt></strong> <em>line of text</em><br>
+     	This command requires no action beyond logging its receipt
+	(the entire command, including the <tt>LOG</tt>).
+        In project 4C, the server may send such commands to help 
+	you debug problems with your reports.
+   </li>
+   <li> <tt><strong>OFF</strong></tt><br>
+   	This command should, like pressing the button, output (and log) a time-stamped <tt>SHUTDOWN</tt> message 
+	and exit.
+   </li>
+</ul>
+<P>
+All received commands will be terminated by a new-line character ('<em>\n</em>').
+Note that when your program is tested (by the sanity checker or grading program)
+stdin will not be a console, but a pipe.  
+A single read may return a partial line or multiple lines.
+Make sure that your program buffers and lexes its input,
+and does not assume that one call to <em>read(2)</em> will return one command.
+</P>
+<P>
+Nothing special needs to be done about strange combinations of commands:
+<UL>
+   <li> a <tt>START</tt> when you are already started is a no-op.</li>
+   <li> a <tt>STOP</tt> when you are already stopped is a no-op.</li>
+   <li> it is not expected that a <tt>STOP</tt>, <tt>PERIOD</tt>,
+   	or <tt>SCALE</tt> command
+        will force out a report whose time as not yet come.</li>
+</UL>
+</P>
+<P>
+If logging is enabled, all received commands (valid or not)
+should be appended to the log file (exactly as
+received, with no timestamp) but not displayed to standard output.  A sample log is 
+shown below:
+</p>
+<pre><tt>
+	11:37:41 98.6
+	11:37:42 98.6
+	11:37:43 98.6
+	PERIOD=5
+	11:37:44 98.6
+	11:37:49 98.6
+	11:37:54 98.6
+	SCALE=C
+	11:37:59 37.0
+	11:38:04 37.0
+	STOP
+	START
+	11:38:19 37.0
+	11:38:24 37.0
+	OFF
+	11:38:27 SHUTDOWN
+</tt></pre>
+<P>
+If you are typing commands to your program, you may see the echos interspersed with 
+temperature reports.  This is unimportant, because they should be correctly distinct
+in your log, and when we test your submission, the input will becoming from a program
+rather than a console.
+</P>
+<P>
+The sanity check script will send a series of commands to your program, and some
+implementations process all the commands before generating any reports.  To make
+sure this doesn't happen, you should generate your first report before you start
+processing input commands.  Again, this will not be an issue during testing because
+there will be delays between the commands when we test your program.
+</P>
+<P>
+You could implement this program with separate threads for sensor polling and command processing,
+but the computation associated with each operation is so small that you may find it much simpler
+to use a single thread (and polling or non-blocking I/O) to avoid hanging on standard input for
+commands that only rarely arrive.  A poll system call cannot tell you that the button has
+been pushed, but GPIO pin read is a non-blocking operation, so you can simply read the button
+status periodically.  If your interval between reads is too long, the button may be pressed
+and released before you can read its status.  To avoid this problem, you can either use
+a short polling interval or arrange for an interrupt/signal when the button is pushed.
+</P>
+<P>
+To facilitate development and testing you might find it helpful to write your program to support a 
+(<tt>-DDUMMY</tt>) define whose special code includes mock implementations for the <tt>mraa_aio_</tt> and 
+<tt>mraa_gpio_</tt> functionality. Doing so will enable you to do most of your testing on your regular computer.  
+When you are satisfied that it works there, modify your Makefile, run the command "<tt>uname -r</tt>", and check for the 
+presence of the string "<tt>beaglebone</tt>" in the resulting output. If it is not found, build with a rule
 that passed the <tt>-DDUMMY</tt> flag to <em>gcc</em>.
 </p>
 
-
-<H3>Part 2: Authenticated TLS Session Encryption</H3>
-<P>
-Write a program (called <tt>lab4c_tls</tt>) that:
-<ul>
-   <li> builds and runs on your Beaglebone</li>
-   <li> is based on the remote logging appliance build in part 1</li>
- <!--
-   <li> accepts the following additional command line parameter:
-   	<ul>
-	<li><tt>--serverkey=</tt><em>key file</em> for server's public key</li>
-	</ul>
-   </li>
- -->
-   <li> operates by:
-   	<ol type="1">
-		<li> opening a TLS connection to the server at the specified address and port
-		     <!-- and authenticating the server against a supplied
-			     <a href="lab4c_server.crt">certificate</a>.
-		     If the server
-		     does not use the expected certificate, log an error (to both
-		     standard error and to the log), close the connection, and exit.-->
-		</li>
-		<li> sending (and logging) your student ID followed by a newline </li>
-		<li> sending (and logging) temperature reports over the connection </li>
-		<li> processing (and logging) commands received over the connection </li>
-	</ol>
-   </li>
-</ul>
-The ID number will appear in the TLS server log
-(follow the
-<a href="serverinfo.html">TLS server URL</a>),
-and will permit you to find the reports for your sessions. 
-</p>
-<P>
-The SSL library is not bullet-proof against protocol errors, and buggy clients 
-will occasionally crash the server.  It should be restarted pretty promptly.
-If not, ask one of the TAs for help.  If the server seems to crash when you
-are testing your client, you probably have a bug in your SSL connection establishment.
-</P>
-<p>
-Note that you may choose to:
-<ul>
-	<li>write two versions of the program</li>
-	<li>write a single program that can be compiled to produce two different executables</li>
-	<li>write a single executable that implements both functionalities, and chooses which to use
-	    based on the name by which it was invoked.  In this last case, your Makefile should 
-	    produce two different links (with the required names) to that program.
-	    </li>
-</ul>
-</p>
-
-<H2> SUMMARY OF EXIT CODES: </H2>
-<ul>
-	<li> 0: successful run</li>
-	<li> 1: invalid command-line parameters (e.g., unrecognized parameter, no such host)</li>
-	<li> 2: other run-time failures (e.g., server rejected or closed session)</li>
-</ul>
-
 <H2>SUBMISSION:</H2>
 <p>
-Your tarball should have a name of the form <tt>lab4c-</tt><em>studentID</em><tt>.tar.gz</tt>.  Your ID should be in the XXXXXXXXX format, not the XXX-XXX-XXX format.
+Your name, student ID, and email address  should also appear as comments at the top
+of your <tt>Makefile</tt> and each source file. 
+Your ID should be in the XXXXXXXXX format, not the XXX-XXX-XXX format.
+<P>
+Your tarball should have a name of the form <tt>lab4b-</tt><em>studentID</em><tt>.tar.gz</tt>.
 You can sanity check your submission with this 
-<A href="P4C_check.sh">test script</A>
-which should run on your Beaglebone or (if with appropriately dummied sensor access) on your usual Linux development environment.
+<A href="P4B_check.sh">test script</A>.  
+It should run on an embedded system, but if your program is (as above) runnable on your Linux
+development system, the sanity check script should also run there.
 Note, however, that passing this sanity check does not guarantee a 100% score on the project. You are responsible for testing your own code, and the sanity check script is merely one tool for testing, not a guarantee that everything is correct.
+There will be no manual re-grading on this project.
 Submissions that do not pass the test script are likely to receive very low scores.
 </p>
 <P>
 You may add files not specified in this page into the tarball for your submission, if you feel they are helpful. If you do so, be sure to mention each such file by name in your README file. Also be sure they are properly handled during the dist and clean operations in your Makefile.
-</P>
 <P>
 Your <strong>README</strong> file (and all source files) must include lines of the form:
 <ul>
@@ -304,24 +305,29 @@ Points for this project will be awarded:
 <tr> <td></td>		<th align="left">Packaging and build (10% total)</th></tr>
 <tr> <td>3%</td>	<td>un-tars expected contents</td></tr>
 <tr> <td>3%</td>	<td>clean build of correct program w/default action (no warnings)</td></tr>
-<tr> <td>2%</td>	<td>Makefile has working <tt>clean</tt>, <tt>dist</tt> targets</td></tr>
+<tr> <td>2%</td>	<td>Makefile has working <tt>clean</tt>, <tt>check</tt>, <tt>dist</tt> targets</td></tr>
 <tr> <td>2%</td>	<td>reasonableness of <tt>README</tt> contents</td></tr>
 
 <tr> <td></td> </tr>
-<tr> <td></td>		<th align="left">Unencrypted (50% total)</th></tr>
-<tr> <td>20%</td>	<td>establishes TCP session, and presents ID</td></tr>
-<tr> <td>10%</td>	<td>reports temperatures</td></tr>
-<tr> <td>10%</td>	<td>correct command processing</td></tr>
-<tr> <td>10%</td>	<td>command and data logging</td</tr>
+<tr> <td></td>		<th align="left">Sensor Functionality (25% total)</th></tr>
+<tr> <td>10%</td>	<td>samples and reports temperature</td></tr>
+<tr> <td>5%</td>	<td>reports Fahrenheit temperature (by default)</td></tr>
+<tr> <td>5%</td>	<td>reports Centegratde temperature (w/<tt>--scale=</tt> parameter)</td></tr>
+<tr> <td>5%</td>	<td>samples button and exits</td></tr>
 
 <tr> <td></td> </tr>
-<tr> <td></td>		<th align="left">Encrypted Server Sessions (40% total)</th></tr>
-<tr> <td>20%</td>	<td>establishes TLS session, presents ID</td></tr>
-<!--
-<tr> <td>10%</td>	<td>correctly authenticates (or rejects) server</td></tr>
--->
-<tr> <td>10%</td>	<td>reports temperatures</td></tr>
-<tr> <td>10%</td>	<td>correct command processing</td></tr>
+<tr> <td></td>		<th align="left">Control Functionality (40% total)</th></tr>
+<tr> <td>10%</td>	<td>command and data logging</td</tr>
+<tr> <td>10%</td>	<td><tt>START</tt>/<tt>STOP</tt> commands</td></tr>
+<tr> <td>10%</td>	<td><tt>PERIOD=</tt><em>#</em> command</td></tr>
+<tr> <td>5%</td>	<td><tt>SCALE=C</tt>/<tt>F</tt> commands</td></tr>
+<tr> <td>5%</td>	<td><tt>OFF</tt> command</td></tr>
+
+<tr> <td></td> </tr>
+<tr> <td></td>		<th align="left">Code Review (25%)</th></tr>
+<tr> <td>10%</td>	<td>use of AIO functions to read temperature</td></tr>
+<tr> <td>10%</td>	<td>use of GPIO functions to read button</td></tr>
+<tr> <td>5%</td>	<td>general readability and understandability</td></tr>
 </tbody></table>
 </div>
 
